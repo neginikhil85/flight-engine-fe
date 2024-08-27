@@ -1,0 +1,13 @@
+.custom-date-time-picker {
+    padding: 0.2rem;
+}
+
+.custom-date-time-picker vaadin-vertical-layout {
+    padding: 0;
+}
+
+.custom-date-time-picker vaadin-date-picker, vaadin-time-picker {
+     width: 12rem;
+     padding: 0.01rem;
+     --lumo-text-field-size: var(--lumo-size-xs);
+}

@@ -1,0 +1,21 @@
+.custom-dialog::part(content) {
+    padding: 1rem;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-title {
+    font-size: 1rem;
+    font-weight: 530;
+}
+
+.dialog-close-btn {
+    background-color: #4c4cb7;
+    color: white;
+    height: 1.3rem;
+    width: 1.3rem;
+    border: 1px solid black;
+}

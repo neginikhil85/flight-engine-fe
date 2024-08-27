@@ -1,0 +1,28 @@
+/* headers-css */
+
+.app-header {
+    background-color: #000099;
+    height: 3.5rem;
+}
+
+.app-header vaadin-drawer-toggle {
+    background-color: white;
+    height: 2rem;
+    width: 2rem;
+}
+
+.app-header img {
+    height: 4rem;
+}
+
+.app-header h1 {
+    font-size: 1.3rem;
+    color: white;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .app-header h1 {
+        font-size: 1rem; /* Adjust the font size for smaller screens */
+    }
+}

@@ -1,0 +1,62 @@
+/* Style for grid */
+.custom-grid {
+    border: 2px solid black;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.custom-grid::part(header-cell) {
+    background-color: #4c4cb7;
+    color: white;
+}
+
+.custom-grid .compact-button {
+    font-size: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.10); /* Semi-transparent white background */
+    color: #4c4cb7; /* Text color */
+    height: 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Light border to enhance glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
+}
+
+.custom-grid .compact-button:hover {
+    color: #ba48aa;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-dialog {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw; /* Max width as a percentage of viewport width */
+    max-height: 90vh; /* Max height as a percentage of viewport height */
+}
+
+.custom-grid vaadin-grid-sorter::part(content) {
+    color: white;
+}
+
+.custom-grid vaadin-grid-sorter::part(indicators) {
+    display: none;
+    /*color: white;*/
+}
+
+/* Ensure the grid expands to fit the dialog */
+.nested-custom-grid {
+    min-width: 6in;
+    max-height: 2in;
+}
+
+.searchable-grid {
+    padding: 0.25rem;
+}
+
+.searchable-grid vaadin-text-field {
+    width: 12rem;
+    padding: 0.01rem;
+    --lumo-text-field-size: var(--lumo-size-s);
+}
+
+

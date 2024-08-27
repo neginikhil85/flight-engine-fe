@@ -1,0 +1,16 @@
+@import 'fonts.css';
+@import 'component-css/headers.css';
+@import 'component-css/grid.css';
+@import 'component-css/dialog.css';
+@import 'component-css/date-time-picker.css';
+@import 'component-css/form.css';
+@import 'component-css/drawer.css';
+@import 'views-css/flight-data-view.css';
+@import 'views-css/delay-view.css';
+
+html {
+    --vaadin-app-layout-drawer-width : 12rem;
+    --lumo-font-family: 'Poppins';
+}
+
+scrollbar-width: thin;

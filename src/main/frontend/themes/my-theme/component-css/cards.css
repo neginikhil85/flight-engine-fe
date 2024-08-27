@@ -1,0 +1,81 @@
+.custom-card {
+    background: linear-gradient(45deg, #3405a3, #8e2de2, #f27121, #fb8c00);
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    color: black;  /* Ensure text color is visible */
+}
+
+.custom-card:hover {
+    pointer: cursor;
+    /*background: #6666c1;*//* Enhanced gradient */
+    box-shadow: 4px 4px 13px 0px rgb(221 219 225); /* Stronger shadow on hover */
+}
+
+.custom-card-clickable {
+    background: #6b04fd;
+    border-radius: 0.4rem;
+    color: #fff;
+    padding: 0.3rem;
+    font-size: 2rem;
+    cursor:pointer;
+    /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    background: #6666c1;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    padding: 11px;
+    color: white;  *//* Ensure text color is visible *//*
+    min-width: 22px;
+    cursor: pointer;*/
+    /*width: auto;
+      margin: 0 20px;
+      box-sizing: border-box;
+      background: #6b04fd;
+      min-height: 200px;
+      border-radius: 32px;
+      position: sticky;
+
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-family : 'system-ui', sans-serif;
+      font-size: 90px;
+      font-weight: medium;
+      color: #FFF;*/
+}
+
+.custom-card-light-text {
+    color: white;
+}
+
+.custom-card h1 {
+   color: white;
+   font-size: 30px;
+   margin-bottom: 5px;
+   text-align: justify;
+   font-family: 'Roboto';
+   text-shadow:
+           -1px -1px 0 #000,
+            1px -1px 0 #000,
+           -1px  1px 0 #000,
+            1px  1px 0 #000;
+}
+
+.f-data-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+}
+
+.f-data-container > * {
+    flex: 1 1 auto; /* Allow cards to grow and shrink */
+    margin: 0.5em; /* Add margin between cards */
+    max-width: 250px; /* Maximum width for the cards */
+    min-width: 150px; /* Minimum width for the cards */
+}
+
+.card-div-details  {
+    justify-content: space-between;
+}

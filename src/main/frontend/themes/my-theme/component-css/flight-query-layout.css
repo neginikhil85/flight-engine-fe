@@ -1,0 +1,62 @@
+.flight-inquiry-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.flight-inquiry-layout vaadin-button {
+    background-color: #3232ad;
+    color: white;
+    font-size: 13px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+}
+
+.contents {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.data-view {
+    flex: 8; /* 80% of space */
+    margin-right: 10px;
+}
+
+.form-view {
+    flex: 2; /* 20% of space */
+    width: 100%; /* Ensure it takes up the full width allocated by flex property */
+}
+
+.form-view vaadin-button {
+    background-color: #3535a5;
+    color: white;
+}
+
+.form-view vaadin-text-field {
+    height: 3rem; /* Adjust this value as needed */
+    width: 10rem;  /* Adjust this value as needed */
+    --lumo-text-field-size: var(--lumo-size-s); /* Optional: for size adjustments */
+}
+
+.form-view-title {
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 2px solid grey;
+}
+

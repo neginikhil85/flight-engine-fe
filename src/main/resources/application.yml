@@ -1,0 +1,47 @@
+vaadin:
+    launch-browser: true
+
+flight:
+    engine:
+        service:
+            base-url: localhost:8081
+
+#Joc and OAuth config
+joc:
+    client:
+        base-url: https://api-uat-az-6eflightapi.goindigo.in
+        api-key: a2222f7718b76f8827be60523b9855a5
+    websocket:
+        connection-url: ws://localhost:${server.port}/ws
+
+oauth:
+    client:
+        base-url: https://login.microsoftonline.com
+        auth-id: 73f2e714-a32e-4697-9449-dffe1df8a5d5
+        payload:
+            clientId: 97a00451-c00f-4f78-9293-9100e8c2e6c5
+            clientSecret: LIC8Q~sc~ZwxW_NRi30LX1ed61HLFDKnVaVakcaY
+            scope: api://395f8062-903e-4c5f-b37c-28b5e8c57318/.default
+            grantType: client_credentials
+
+# websocket configuration
+websocket:
+    handshake-url:
+        delay: ws://${flight.engine.service.base-url}/delay
+        diversion: ws://${flight.engine.service.base-url}/diversion
+        door-close: ws://${flight.engine.service.base-url}/door-close
+        equipment: ws://${flight.engine.service.base-url}/equipment
+        flight-cancel: ws://${flight.engine.service.base-url}/flight-cancel
+        flight-delete: ws://${flight.engine.service.base-url}/flight-delete
+        flight-return: ws://${flight.engine.service.base-url}/flight-return
+        gate-change: ws://${flight.engine.service.base-url}/gate-change
+        in-block-time: ws://${flight.engine.service.base-url}/in-block-time
+        landing-time: ws://${flight.engine.service.base-url}/landing-time
+        off-block-time: ws://${flight.engine.service.base-url}/off-block-time
+        operation-status: ws://${flight.engine.service.base-url}/operation-status
+        takeoff-time: ws://${flight.engine.service.base-url}/takeoff-time
+        terminal: ws://${flight.engine.service.base-url}/terminal
+
+# user defined properties
+grid-column-provider:
+    date-format: 'dd-MM-yyyy hh:mm a'
