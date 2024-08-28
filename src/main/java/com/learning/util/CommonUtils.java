@@ -1,5 +1,6 @@
 package com.learning.util;
 
+import com.learning.vaadin.ui.component.picker.VerticalDateTimePicker;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.textfield.TextField;
 import lombok.experimental.UtilityClass;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -20,6 +22,12 @@ public class CommonUtils {
         return  ((field instanceof TextField textField) && StringUtils.isNotBlank(textField.getValue()))
                 ? textField.getValue()
                 : null ;
+    }
+
+    public static String getDateFieldValue(Component field) {
+        return ((field instanceof VerticalDateTimePicker dateTimePicker)) && Objects.nonNull(dateTimePicker.getValue())
+                ? dateTimePicker.getValue().toString()
+                : null;
     }
 
     public static Integer convertToInteger(Component textField) {

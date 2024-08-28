@@ -11,11 +11,13 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.Arrays;
 import java.util.Map;
 
+@Slf4j
 public class FlightFormView extends VerticalLayout {
 
     public static final String MANDATORY_FIELD_MISSING = "Mandatory Field missing";
@@ -46,14 +48,15 @@ public class FlightFormView extends VerticalLayout {
             showError(MANDATORY_FIELD_MISSING);
         } else {
             FlightRequest flightRequest = buildFlightRequest(flightForm.getFields());
-            jocService.getFlightResponse(flightRequest)
-                    .ifPresent(flightResponse -> {
-                        UI.getCurrent().navigate(FlightInquiryView.class)
-                                .ifPresent(flightView -> {
-                                    flightView.setFlightResponseInGrid(flightResponse);
-                                    flightView.setFlightRequest(flightRequest);
-                                });
-                    });
+            log.info("flightRequest : {}", flightRequest);
+//            jocService.getFlightResponse(flightRequest)
+//                    .ifPresent(flightResponse -> {
+//                        UI.getCurrent().navigate(FlightInquiryView.class)
+//                                .ifPresent(flightView -> {
+//                                    flightView.setFlightResponseInGrid(flightResponse);
+//                                    flightView.setFlightRequest(flightRequest);
+//                                });
+//                    });
         }
 
         flightForm.getFields().values().forEach(HasValue::clear);
@@ -66,8 +69,8 @@ public class FlightFormView extends VerticalLayout {
                 .startStation(CommonUtils.getTextFieldValue(formTextFields.get(FormField.START_STATION)))
                 .endStation(CommonUtils.getTextFieldValue(formTextFields.get(FormField.END_STATION)))
                 .startTerminal(CommonUtils.getTextFieldValue(formTextFields.get(FormField.START_TERMINAL)))
-                .startDateTime(CommonUtils.getTextFieldValue(formTextFields.get(FormField.START_DATE_TIME)))
-                .endDateTime(CommonUtils.getTextFieldValue(formTextFields.get(FormField.END_DATE_TIME)))
+                .startDateTime(CommonUtils.getDateFieldValue(formTextFields.get(FormField.START_DATE_TIME)))
+                .endDateTime(CommonUtils.getDateFieldValue(formTextFields.get(FormField.END_DATE_TIME)))
                 .operationalStatus(CommonUtils.getTextFieldValue(formTextFields.get(FormField.OPERATIONAL_STATUS)))
                 .page(1)
                 .size(100)
@@ -82,7 +85,7 @@ public class FlightFormView extends VerticalLayout {
         Notification errorNotify = new Notification(text);
         errorNotify.addThemeVariants(NotificationVariant.LUMO_ERROR);
         errorNotify.setPosition(Notification.Position.TOP_END);
-        errorNotify.setDuration(1200);
+        errorNotify.setDuration(20000);
         errorNotify.open();
     }
 }

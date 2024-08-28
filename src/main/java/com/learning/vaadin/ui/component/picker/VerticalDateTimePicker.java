@@ -21,9 +21,9 @@ public class VerticalDateTimePicker extends CustomField<LocalDateTime> {
         setLabel(label);
         // Initialize date and time pickers
         datePicker = new DatePicker();
-        datePicker.setPlaceholder("enter date");
+        datePicker.setPlaceholder("select date");
         timePicker = new TimePicker();
-        timePicker.setPlaceholder("enter time");
+        timePicker.setPlaceholder("select time");
 
         // Add components to the layout
         VerticalLayout layout = new VerticalLayout(datePicker, timePicker);

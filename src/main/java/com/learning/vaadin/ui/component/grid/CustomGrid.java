@@ -51,7 +51,7 @@ public class CustomGrid<T> extends Grid<T> {
 
         if (header.equals("Event Received On")) {
             this.sort(List.of(new GridSortOrder<>(column, SortDirection.DESCENDING)));
-            column.setVisible(false); // comment this if you need to show the column
+            column.setVisible(true); // comment this if you need to show the column
         }
     }
 

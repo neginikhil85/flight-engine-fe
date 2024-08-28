@@ -1,6 +1,5 @@
 package com.learning.vaadin.ui.component.grid.provider.impl.diversion;
 
-
 import com.learning.model.grid.Diversion;
 import com.learning.util.CommonUtils;
 import com.learning.vaadin.ui.component.grid.provider.ColumnProvider;
@@ -30,17 +29,17 @@ public class DiversionColumnProvider implements ColumnProvider<Diversion> {
             put("Diversion Reason", Diversion::getDiversionCode);
             put("Estimated In Block", Diversion::getEstimatedInBlock);
             put("Registration", Diversion::getRegistration);
-            put("Continuation Flight No.", diversion -> diversion.getContinuationLeg().getFlightNumber());
-            put("Continuation Date Of Origin", diversion -> diversion.getContinuationLeg().getDateOfOrigin());
-            put("Continuation Start Station", diversion -> diversion.getContinuationLeg().getStartStation());
-            put("Continuation end Station", diversion -> diversion.getContinuationLeg().getEndStation());
-            put("Continuation Scheduled Start Time", diversion -> diversion.getContinuationLeg().getScheduledStartTime());
-            put("Continuation suffix", diversion -> diversion.getContinuationLeg().getSuffix());
-            put("Continuation scheduled End Time", diversion -> diversion.getContinuationLeg().getScheduledEndTime());
-            put("Continuation Start Time Offset", diversion -> diversion.getContinuationLeg().getStartTimeOffset());
-            put("Continuation End Time Offset", diversion -> diversion.getContinuationLeg().getEndTimeOffset());
-            put("Continuation Seq No.", diversion -> diversion.getContinuationLeg().getSeqNumber());
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Continuation Flight No.", safeValueProvider(diversion -> diversion.getContinuationLeg().getFlightNumber()));
+            put("Continuation Date Of Origin", safeValueProvider(diversion -> diversion.getContinuationLeg().getDateOfOrigin()));
+            put("Continuation Start Station", safeValueProvider(diversion -> diversion.getContinuationLeg().getStartStation()));
+            put("Continuation end Station", safeValueProvider(diversion -> diversion.getContinuationLeg().getEndStation()));
+            put("Continuation Scheduled Start Time", safeValueProvider(diversion -> diversion.getContinuationLeg().getScheduledStartTime()));
+            put("Continuation suffix", safeValueProvider(diversion -> diversion.getContinuationLeg().getSuffix()));
+            put("Continuation scheduled End Time", safeValueProvider(diversion -> diversion.getContinuationLeg().getScheduledEndTime()));
+            put("Continuation Start Time Offset", safeValueProvider(diversion -> diversion.getContinuationLeg().getStartTimeOffset()));
+            put("Continuation End Time Offset", safeValueProvider(diversion -> diversion.getContinuationLeg().getEndTimeOffset()));
+            put("Continuation Seq No.", safeValueProvider(diversion -> diversion.getContinuationLeg().getSeqNumber()));
+            put("Event Received On", safeValueProvider(delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn())));
         }};
     }
 }
