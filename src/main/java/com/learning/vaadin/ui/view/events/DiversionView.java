@@ -43,7 +43,7 @@ public class DiversionView extends VerticalLayout{
         H1 title = new H1("Diversion Events");
         SearchableGrid<Diversion> diversionGrid = new SearchableGrid<>(Diversion.class, columnProviderFactory);
         diversionGrid.updateItems(diversionData);
-        diversionGrid.setSearchFilters(GridFilterBean.DELAY_DATA.getBean());
+        diversionGrid.setSearchFilters(GridFilterBean.DIVERSION_DATA.getBean());
 
         doWebSocketHandshake(webSocketConnectionUrl, diversionGrid.getGrid());
 

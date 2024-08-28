@@ -32,7 +32,7 @@ public class EquipmentView extends VerticalLayout {
     private final List<Equipment> equipmentData = new ArrayList<>();
     private final EquipmentConverter converter;
 
-    public EquipmentView(@Value("${websocket.handshake-url.diversion}") String webSocketConnectionUrl, EquipmentConverter converter,
+    public EquipmentView(@Value("${websocket.handshake-url.equipment}") String webSocketConnectionUrl, EquipmentConverter converter,
                          ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
@@ -40,7 +40,7 @@ public class EquipmentView extends VerticalLayout {
         H1 title = new H1("Equipment Events");
         SearchableGrid<Equipment> equipmentGrid = new SearchableGrid<>(Equipment.class, columnProviderFactory);
         equipmentGrid.updateItems(equipmentData);
-        equipmentGrid.setSearchFilters(GridFilterBean.DELAY_DATA.getBean());
+        equipmentGrid.setSearchFilters(GridFilterBean.EQUIPMENT.getBean());
 
         doWebSocketHandshake(webSocketConnectionUrl, equipmentGrid.getGrid());
 

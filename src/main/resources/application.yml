@@ -39,7 +39,7 @@ websocket:
         landing-time: ws://${flight.engine.service.base-url}/landing-time
         off-block-time: ws://${flight.engine.service.base-url}/off-block-time
         operation-status: ws://${flight.engine.service.base-url}/operation-status
-        takeoff-time: ws://${flight.engine.service.base-url}/takeoff-time
+        takeoff-time: ws://${flight.engine.service.base-url}/Takeoff-time
         terminal: ws://${flight.engine.service.base-url}/terminal
 
 # user defined properties

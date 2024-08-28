@@ -11,6 +11,7 @@ import com.learning.vaadin.ui.component.grid.provider.ColumnProviderFactory;
 import com.learning.vaadin.ui.layout.MainLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ import static org.apache.el.lang.ELArithmetic.add;
 @Slf4j
 @PageTitle("flight-delay")
 @Route(value = "/ws/flight-delay", layout = MainLayout.class)
-public class DoorCloseView {
+public class DoorCloseView extends VerticalLayout{
 
     private final List<DoorClose> doorCloseData = new ArrayList<>();
     private final DoorCloseConverter converter;
@@ -43,7 +44,7 @@ public class DoorCloseView {
         H1 title = new H1("Door-close Events");
         SearchableGrid<DoorClose> doorCloseGrid = new SearchableGrid<>(DoorClose.class, columnProviderFactory);
         doorCloseGrid.updateItems(doorCloseData);
-        doorCloseGrid.setSearchFilters(GridFilterBean.DELAY_DATA.getBean());
+        doorCloseGrid.setSearchFilters(GridFilterBean.DOOR_CLOSE.getBean());
 
         doWebSocketHandshake(webSocketConnectionUrl, doorCloseGrid.getGrid());
 
