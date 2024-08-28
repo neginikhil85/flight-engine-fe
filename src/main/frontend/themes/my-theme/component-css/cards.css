@@ -20,30 +20,6 @@
     padding: 0.3rem;
     font-size: 2rem;
     cursor:pointer;
-    /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    background: #6666c1;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    border: 0.5px solid grey;
-    border-radius: 10px;
-    padding: 11px;
-    color: white;  *//* Ensure text color is visible *//*
-    min-width: 22px;
-    cursor: pointer;*/
-    /*width: auto;
-      margin: 0 20px;
-      box-sizing: border-box;
-      background: #6b04fd;
-      min-height: 200px;
-      border-radius: 32px;
-      position: sticky;
-
-      display:flex;
-      align-items: center;
-      justify-content: center;
-      font-family : 'system-ui', sans-serif;
-      font-size: 90px;
-      font-weight: medium;
-      color: #FFF;*/
 }
 
 .custom-card-light-text {

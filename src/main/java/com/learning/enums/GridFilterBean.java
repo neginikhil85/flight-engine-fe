@@ -11,19 +11,18 @@ import java.util.function.Supplier;
 @Getter
 public enum GridFilterBean {
     FLIGHT_DATA(FlightDataGridFilters::new),
-    ACTUAL_TIME(ActualTimeDataGridFilters::new),
+    ACTUAL_TIMES(ActualTimesDataGridFilters::new),
     DELAY_DATA(DelayDataGridFilters::new),
     DIVERSION_DATA(DiversionDataGridFilters::new),
     DOOR_CLOSE(DoorCloseDataGridFilters::new),
     EQUIPMENT(EquipmentDataGridFilters::new),
-    ESTIMATED_TIME(EstimatedTimeDataGridFilters::new),
+    ESTIMATED_TIMES(EstimatedTimesDataGridFilters::new),
     FLIGHT_CANCEL(FlightCancelDataGridFilters::new),
     FLIGHT_DELETE(FlightDeleteDataGridFilters::new),
     FLIGHT_RETURN(FlightReturnDataGridFilters::new),
     GATE_CHANGE(GateChangeDataGridFilters::new),
     OPERATION_STATUS(OperationStatusDataGridFilters::new),
     TERMINAL(TerminalDataGridFilters::new);
-
 
     private final GridFilters<?> bean;
     private final SingletonHelper singletonHelper = new SingletonHelper();

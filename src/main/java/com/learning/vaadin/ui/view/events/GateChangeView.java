@@ -1,11 +1,8 @@
 package com.learning.vaadin.ui.view.events;
 
-import com.learning.converter.FlightReturnConverter;
 import com.learning.converter.GateChangeConverter;
 import com.learning.enums.GridFilterBean;
-import com.learning.event.FlightReturnEvent;
 import com.learning.event.GateChangeEvent;
-import com.learning.model.grid.FlightReturn;
 import com.learning.model.grid.GateChange;
 import com.learning.util.MapperUtils;
 import com.learning.vaadin.ui.component.grid.CustomGrid;
@@ -29,18 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delete", layout = MainLayout.class)
+@PageTitle("gate-change")
+@Route(value = "/ws/gate-change", layout = MainLayout.class)
 public class GateChangeView extends VerticalLayout{
     private final List<GateChange> gateChangeData = new ArrayList<>();
     private final GateChangeConverter converter;
 
-    public GateChangeView(@Value("${websocket.handshake-url.gate-change}") String webSocketConnectionUrl, GateChangeConverter converter,
-                            ColumnProviderFactory columnProviderFactory) {
+    public GateChangeView(@Value("${websocket.handshake-url.gate-change}") String webSocketConnectionUrl,
+                          GateChangeConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-return-view");
-        H1 title = new H1("Gate-Change Events");
+        addClassName("event-view");
+        H1 title = new H1("Gate Change Events");
         SearchableGrid<GateChange> gateChangeGrid = new SearchableGrid<>(GateChange.class, columnProviderFactory);
         gateChangeGrid.updateItems(gateChangeData);
         gateChangeGrid.setSearchFilters(GridFilterBean.GATE_CHANGE.getBean());
@@ -61,14 +58,14 @@ public class GateChangeView extends VerticalLayout{
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    gateChangeData.add(getgateChangeGrid(message));
+                    gateChangeData.add(getGateChangeGrid(message));
                     gateChangeGrid.getDataProvider().refreshAll();
                 }));
             }
         };
     }
 
-    private GateChange getgateChangeGrid(WebSocketMessage<?> message) {
+    private GateChange getGateChangeGrid(WebSocketMessage<?> message) {
         return converter.convert(MapperUtils.readValue(message.getPayload().toString(), GateChangeEvent.class));
     }
     

@@ -6,7 +6,7 @@
 @import 'component-css/form.css';
 @import 'component-css/drawer.css';
 @import 'views-css/flight-data-view.css';
-@import 'views-css/delay-view.css';
+@import 'views-css/event-view.css';
 
 html {
     --vaadin-app-layout-drawer-width : 12rem;

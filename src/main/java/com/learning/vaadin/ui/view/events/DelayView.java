@@ -1,10 +1,10 @@
 package com.learning.vaadin.ui.view.events;
 
+import com.learning.converter.DelayConverter;
 import com.learning.enums.GridFilterBean;
 import com.learning.event.DelayEvent;
 import com.learning.model.grid.Delay;
 import com.learning.util.MapperUtils;
-import com.learning.converter.DelayConverter;
 import com.learning.vaadin.ui.component.grid.CustomGrid;
 import com.learning.vaadin.ui.component.grid.SearchableGrid;
 import com.learning.vaadin.ui.component.grid.provider.ColumnProviderFactory;
@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delay", layout = MainLayout.class)
+@PageTitle("delay")
+@Route(value = "/ws/delay", layout = MainLayout.class)
 public class DelayView extends VerticalLayout {
 
     private final List<Delay> delayData = new ArrayList<>();
@@ -37,7 +37,7 @@ public class DelayView extends VerticalLayout {
                      ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("delay-view");
+        addClassName("event-view");
         H1 title = new H1("Delay Events");
         SearchableGrid<Delay> delayGrid = new SearchableGrid<>(Delay.class, columnProviderFactory);
         delayGrid.updateItems(delayData);

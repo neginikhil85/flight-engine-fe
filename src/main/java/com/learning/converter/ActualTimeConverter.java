@@ -1,12 +1,12 @@
 package com.learning.converter;
 
-import com.learning.model.grid.ActualTime;
+import com.learning.model.grid.ActualTimes;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ActualTimeConverter {
 
-    public ActualTime convert() {
+    public ActualTimes convert() {
         return null;
     }
 }

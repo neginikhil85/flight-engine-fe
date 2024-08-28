@@ -26,18 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
+@PageTitle("flight-delete")
 @Route(value = "/ws/flight-delete", layout = MainLayout.class)
 public class FlightDeleteView extends VerticalLayout {
     private final List<FlightDelete> flightDeleteData = new ArrayList<>();
     private final FlightDeleteConverter converter;
 
-    public FlightDeleteView(@Value("${websocket.handshake-url.flight-delete}") String webSocketConnectionUrl, FlightDeleteConverter converter,
-                            ColumnProviderFactory columnProviderFactory) {
+    public FlightDeleteView(@Value("${websocket.handshake-url.flight-delete}") String webSocketConnectionUrl,
+                            FlightDeleteConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-cancel-view");
-        H1 title = new H1("Flight-Cancel Events");
+        addClassName("event-view");
+        H1 title = new H1("Flight Delete Events");
         SearchableGrid<FlightDelete> flightDeleteGrid = new SearchableGrid<>(FlightDelete.class, columnProviderFactory);
         flightDeleteGrid.updateItems(flightDeleteData);
         flightDeleteGrid.setSearchFilters(GridFilterBean.FLIGHT_DELETE.getBean());
@@ -58,14 +58,14 @@ public class FlightDeleteView extends VerticalLayout {
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    flightDeleteData.add(getflightDeleteGrid(message));
+                    flightDeleteData.add(getFlightDeleteGrid(message));
                     flightDeleteGrid.getDataProvider().refreshAll();
                 }));
             }
         };
     }
 
-    private FlightDelete getflightDeleteGrid(WebSocketMessage<?> message) {
+    private FlightDelete getFlightDeleteGrid(WebSocketMessage<?> message) {
         return converter.convert(MapperUtils.readValue(message.getPayload().toString(), FlightDeleteEvent.class));
     }
 }

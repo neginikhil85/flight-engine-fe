@@ -26,17 +26,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delay", layout = MainLayout.class)
+@PageTitle("equipment")
+@Route(value = "/ws/equipment", layout = MainLayout.class)
 public class EquipmentView extends VerticalLayout {
     private final List<Equipment> equipmentData = new ArrayList<>();
     private final EquipmentConverter converter;
 
-    public EquipmentView(@Value("${websocket.handshake-url.equipment}") String webSocketConnectionUrl, EquipmentConverter converter,
-                         ColumnProviderFactory columnProviderFactory) {
+    public EquipmentView(@Value("${websocket.handshake-url.equipment}") String webSocketConnectionUrl,
+                         EquipmentConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("delay-view");
+        addClassName("event-view");
         H1 title = new H1("Equipment Events");
         SearchableGrid<Equipment> equipmentGrid = new SearchableGrid<>(Equipment.class, columnProviderFactory);
         equipmentGrid.updateItems(equipmentData);
@@ -52,20 +52,20 @@ public class EquipmentView extends VerticalLayout {
         client.execute(getHandler(equipmentGrid), webSocketConnectionUrl);
     }
 
-    private AbstractWebSocketHandler getHandler(Grid<Equipment> delayGrid) {
+    private AbstractWebSocketHandler getHandler(Grid<Equipment> equipmentGrid) {
         return new AbstractWebSocketHandler() {
 
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    equipmentData.add(getequipmentGrid(message));
-                    delayGrid.getDataProvider().refreshAll();
+                    equipmentData.add(getEquipmentGrid(message));
+                    equipmentGrid.getDataProvider().refreshAll();
                 }));
             }
         };
     }
 
-    private Equipment getequipmentGrid(WebSocketMessage<?> message) {
+    private Equipment getEquipmentGrid(WebSocketMessage<?> message) {
         return converter.convert(MapperUtils.readValue(message.getPayload().toString(), EquipmentEvent.class));
     }
 }

@@ -1,11 +1,8 @@
 package com.learning.vaadin.ui.view.events;
 
-import com.learning.converter.DelayConverter;
 import com.learning.converter.DiversionConverter;
 import com.learning.enums.GridFilterBean;
-import com.learning.event.DelayEvent;
 import com.learning.event.DiversionEvent;
-import com.learning.model.grid.Delay;
 import com.learning.model.grid.Diversion;
 import com.learning.util.MapperUtils;
 import com.learning.vaadin.ui.component.grid.CustomGrid;
@@ -29,8 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delay", layout = MainLayout.class)
+@PageTitle("diversion")
+@Route(value = "/ws/diversion", layout = MainLayout.class)
 public class DiversionView extends VerticalLayout{
     private final List<Diversion> diversionData = new ArrayList<>();
     private final DiversionConverter converter;
@@ -39,7 +36,7 @@ public class DiversionView extends VerticalLayout{
                      ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("delay-view");
+        addClassName("event-view");
         H1 title = new H1("Diversion Events");
         SearchableGrid<Diversion> diversionGrid = new SearchableGrid<>(Diversion.class, columnProviderFactory);
         diversionGrid.updateItems(diversionData);
@@ -55,14 +52,14 @@ public class DiversionView extends VerticalLayout{
         client.execute(getHandler(diversionGrid), webSocketConnectionUrl);
     }
 
-    private AbstractWebSocketHandler getHandler(Grid<Diversion> delayGrid) {
+    private AbstractWebSocketHandler getHandler(Grid<Diversion> diversionGrid) {
         return new AbstractWebSocketHandler() {
 
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
                     diversionData.add(getDiversionGrid(message));
-                    delayGrid.getDataProvider().refreshAll();
+                    diversionGrid.getDataProvider().refreshAll();
                 }));
             }
         };

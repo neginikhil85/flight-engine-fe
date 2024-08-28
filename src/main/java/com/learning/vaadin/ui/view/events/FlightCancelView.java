@@ -1,11 +1,8 @@
 package com.learning.vaadin.ui.view.events;
 
-import com.learning.converter.EquipmentConverter;
 import com.learning.converter.FlightCancelConverter;
 import com.learning.enums.GridFilterBean;
-import com.learning.event.EquipmentEvent;
 import com.learning.event.FlightCancelEvent;
-import com.learning.model.grid.Equipment;
 import com.learning.model.grid.FlightCancel;
 import com.learning.util.MapperUtils;
 import com.learning.vaadin.ui.component.grid.CustomGrid;
@@ -29,18 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delay", layout = MainLayout.class)
+@PageTitle("flight-cancel")
+@Route(value = "/ws/flight-cancel", layout = MainLayout.class)
 public class FlightCancelView extends VerticalLayout {
     private final List<FlightCancel> flightCancelData = new ArrayList<>();
     private final FlightCancelConverter converter;
 
-    public FlightCancelView(@Value("${websocket.handshake-url.flight-cancel}") String webSocketConnectionUrl, FlightCancelConverter converter,
-                         ColumnProviderFactory columnProviderFactory) {
+    public FlightCancelView(@Value("${websocket.handshake-url.flight-cancel}") String webSocketConnectionUrl,
+                            FlightCancelConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-cancel-view");
-        H1 title = new H1("Flight-Cancel Events");
+        addClassName("event-view");
+        H1 title = new H1("Flight Cancel Events");
         SearchableGrid<FlightCancel> flightCancelGrid = new SearchableGrid<>(FlightCancel.class, columnProviderFactory);
         flightCancelGrid.updateItems(flightCancelData);
         flightCancelGrid.setSearchFilters(GridFilterBean.FLIGHT_CANCEL.getBean());
@@ -61,14 +58,14 @@ public class FlightCancelView extends VerticalLayout {
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    flightCancelData.add(getflightCancelGrid(message));
+                    flightCancelData.add(getFlightCancelGrid(message));
                     flightCancelGrid.getDataProvider().refreshAll();
                 }));
             }
         };
     }
 
-    private FlightCancel getflightCancelGrid(WebSocketMessage<?> message) {
+    private FlightCancel getFlightCancelGrid(WebSocketMessage<?> message) {
         return converter.convert(MapperUtils.readValue(message.getPayload().toString(), FlightCancelEvent.class));
     }
 }

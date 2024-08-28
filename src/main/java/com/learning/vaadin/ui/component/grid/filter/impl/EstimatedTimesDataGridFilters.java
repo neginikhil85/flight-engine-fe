@@ -1,10 +1,10 @@
 package com.learning.vaadin.ui.component.grid.filter.impl;
 
-import com.learning.vaadin.ui.component.grid.filter.GridFilters;
 import com.learning.model.grid.EstimatedTime;
+import com.learning.vaadin.ui.component.grid.filter.GridFilters;
 import com.vaadin.flow.function.SerializablePredicate;
 
-public class EstimatedTimeDataGridFilters implements GridFilters<EstimatedTime> {
+public class EstimatedTimesDataGridFilters implements GridFilters<EstimatedTime> {
     @Override
     public SerializablePredicate<EstimatedTime> getFilters(String searchTerm) {
         return estimatedTime -> {

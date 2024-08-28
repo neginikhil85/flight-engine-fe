@@ -26,40 +26,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delete", layout = MainLayout.class)
+@PageTitle("terminal")
+@Route(value = "/ws/terminal", layout = MainLayout.class)
 public class TerminalView extends VerticalLayout{
-    private final List<Terminal> TerminalData = new ArrayList<>();
+    private final List<Terminal> terminalData = new ArrayList<>();
     private final TerminalConverter converter;
 
-    public TerminalView(@Value("${websocket.handshake-url.terminal}") String webSocketConnectionUrl, TerminalConverter converter,
-                           ColumnProviderFactory columnProviderFactory) {
+    public TerminalView(@Value("${websocket.handshake-url.terminal}") String webSocketConnectionUrl,
+                        TerminalConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-return-view");
+        addClassName("event-view");
         H1 title = new H1("Terminal Events");
-        SearchableGrid<Terminal> TerminalGrid = new SearchableGrid<>(Terminal.class, columnProviderFactory);
-        TerminalGrid.updateItems(TerminalData);
-        TerminalGrid.setSearchFilters(GridFilterBean.DELAY_DATA.getBean());
+        SearchableGrid<Terminal> terminalGrid = new SearchableGrid<>(Terminal.class, columnProviderFactory);
+        terminalGrid.updateItems(terminalData);
+        terminalGrid.setSearchFilters(GridFilterBean.TERMINAL.getBean());
 
-        doWebSocketHandshake(webSocketConnectionUrl, TerminalGrid.getGrid());
+        doWebSocketHandshake(webSocketConnectionUrl, terminalGrid.getGrid());
 
-        add(title, TerminalGrid);
+        add(title, terminalGrid);
     }
 
-    private void doWebSocketHandshake(String webSocketConnectionUrl, CustomGrid<Terminal> TerminalGrid) {
+    private void doWebSocketHandshake(String webSocketConnectionUrl, CustomGrid<Terminal> terminalGrid) {
         WebSocketClient client = new StandardWebSocketClient();
-        client.execute(getHandler(TerminalGrid), webSocketConnectionUrl);
+        client.execute(getHandler(terminalGrid), webSocketConnectionUrl);
     }
 
-    private AbstractWebSocketHandler getHandler(Grid<Terminal> TerminalGrid) {
+    private AbstractWebSocketHandler getHandler(Grid<Terminal> terminalGrid) {
         return new AbstractWebSocketHandler() {
 
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    TerminalData.add(getTerminalGrid(message));
-                    TerminalGrid.getDataProvider().refreshAll();
+                    terminalData.add(getTerminalGrid(message));
+                    terminalGrid.getDataProvider().refreshAll();
                 }));
             }
         };

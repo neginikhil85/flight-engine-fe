@@ -26,18 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delete", layout = MainLayout.class)
+@PageTitle("flight-return")
+@Route(value = "/ws/flight-return", layout = MainLayout.class)
 public class FlightReturnView extends VerticalLayout {
     private final List<FlightReturn> flightReturnData = new ArrayList<>();
     private final FlightReturnConverter converter;
 
-    public FlightReturnView(@Value("${websocket.handshake-url.flight-return}") String webSocketConnectionUrl, FlightReturnConverter converter,
-                            ColumnProviderFactory columnProviderFactory) {
+    public FlightReturnView(@Value("${websocket.handshake-url.flight-return}") String webSocketConnectionUrl,
+                            FlightReturnConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-return-view");
-        H1 title = new H1("Flight-Return Events");
+        addClassName("event-view");
+        H1 title = new H1("Flight Return Events");
         SearchableGrid<FlightReturn> flightReturnGrid = new SearchableGrid<>(FlightReturn.class, columnProviderFactory);
         flightReturnGrid.updateItems(flightReturnData);
         flightReturnGrid.setSearchFilters(GridFilterBean.FLIGHT_RETURN.getBean());
@@ -58,14 +58,14 @@ public class FlightReturnView extends VerticalLayout {
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    flightReturnData.add(getflightReturnGrid(message));
+                    flightReturnData.add(getFlightReturnGrid(message));
                     flightReturnGrid.getDataProvider().refreshAll();
                 }));
             }
         };
     }
 
-    private FlightReturn getflightReturnGrid(WebSocketMessage<?> message) {
+    private FlightReturn getFlightReturnGrid(WebSocketMessage<?> message) {
         return converter.convert(MapperUtils.readValue(message.getPayload().toString(), FlightReturnEvent.class));
     }
 }

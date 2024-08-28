@@ -26,40 +26,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@PageTitle("flight-delay")
-@Route(value = "/ws/flight-delete", layout = MainLayout.class)
+@PageTitle("operation-status")
+@Route(value = "/ws/operation-status", layout = MainLayout.class)
 public class OperationStatusView extends VerticalLayout{
-    private final List<OperationStatus> OperationStatusData = new ArrayList<>();
+    private final List<OperationStatus> operationStatusData = new ArrayList<>();
     private final OperationStatusConverter converter;
 
-    public OperationStatusView(@Value("${websocket.handshake-url.operation-status}") String webSocketConnectionUrl, OperationStatusConverter converter,
-                            ColumnProviderFactory columnProviderFactory) {
+    public OperationStatusView(@Value("${websocket.handshake-url.operation-status}") String webSocketConnectionUrl,
+                               OperationStatusConverter converter, ColumnProviderFactory columnProviderFactory) {
         this.converter = converter;
 
-        addClassName("flight-return-view");
-        H1 title = new H1("operation-status Events");
+        addClassName("event-view");
+        H1 title = new H1("Operation Status Events");
         SearchableGrid<OperationStatus> OperationStatusGrid = new SearchableGrid<>(OperationStatus.class, columnProviderFactory);
-        OperationStatusGrid.updateItems(OperationStatusData);
-        OperationStatusGrid.setSearchFilters(GridFilterBean.DELAY_DATA.getBean());
+        OperationStatusGrid.updateItems(operationStatusData);
+        OperationStatusGrid.setSearchFilters(GridFilterBean.OPERATION_STATUS.getBean());
 
         doWebSocketHandshake(webSocketConnectionUrl, OperationStatusGrid.getGrid());
 
         add(title, OperationStatusGrid);
     }
 
-    private void doWebSocketHandshake(String webSocketConnectionUrl, CustomGrid<OperationStatus> OperationStatusGrid) {
+    private void doWebSocketHandshake(String webSocketConnectionUrl, CustomGrid<OperationStatus> operationStatusGrid) {
         WebSocketClient client = new StandardWebSocketClient();
-        client.execute(getHandler(OperationStatusGrid), webSocketConnectionUrl);
+        client.execute(getHandler(operationStatusGrid), webSocketConnectionUrl);
     }
 
-    private AbstractWebSocketHandler getHandler(Grid<OperationStatus> OperationStatusGrid) {
+    private AbstractWebSocketHandler getHandler(Grid<OperationStatus> operationStatusGrid) {
         return new AbstractWebSocketHandler() {
 
             @Override
             public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) {
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    OperationStatusData.add(getOperationStatusGrid(message));
-                    OperationStatusGrid.getDataProvider().refreshAll();
+                    operationStatusData.add(getOperationStatusGrid(message));
+                    operationStatusGrid.getDataProvider().refreshAll();
                 }));
             }
         };
