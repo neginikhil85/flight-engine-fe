@@ -2,6 +2,7 @@ package com.learning.model.grid;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.learning.model.dto.FlightInfoDto;
+import com.learning.model.response.FlightLegState;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlightReturnEvent implements EventData {
+public class FlightReturnEvent {
     private FlightInfoDto flightInfo;
     private FlightLegState.ReturnEventData.ReturnAtom returnAtom;
     private LocalDateTime eventReceived;

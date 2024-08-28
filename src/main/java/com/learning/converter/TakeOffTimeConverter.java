@@ -27,6 +27,8 @@ public class TakeOffTimeConverter implements GridConverter<TakeOffTimeEvent, Tak
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+        CommonUtils.setIfNotNull(event.getCurrentTakeOffTime(), builder::currentTakeOffTime);
+        CommonUtils.setIfNotNull(event.getTimeType(), builder::timeType);
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

@@ -27,6 +27,10 @@ public class DoorCloseConverter implements GridConverter<DoorCloseEvent, DoorClo
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+
+        if (Objects.nonNull(event.getCurrentActualTimes())) {
+            CommonUtils.setIfNotNull(event.getCurrentActualTimes(), builder::currentActualTimes);
+        }
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DelayEvent implements EventData {
+public class DelayEvent {
     private FlightInfoDto flightInfo;
     private String currentOffBlock;
     private String previousOffBlock;

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoorCloseEvent implements EventData {
+public class DoorCloseEvent {
     private FlightInfoDto flightInfo;
     private FlightLegState.ActualTimes currentActualTimes;
     private FlightLegState.ActualTimes previousActualTimes;

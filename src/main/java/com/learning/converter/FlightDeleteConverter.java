@@ -27,6 +27,9 @@ public class FlightDeleteConverter implements GridConverter<FlightDeleteEvent, F
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+
+        CommonUtils.setIfNotNull(event.getOperationalStatus(), builder::operationalStatus);
+
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

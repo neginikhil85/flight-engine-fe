@@ -28,7 +28,7 @@ public class DoorCloseColumnProvider implements ColumnProvider<DoorClose> {
             put("Door close Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getDoorClose()));
             put("In Block Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getInBlock()));
             put("Off Block Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getOffBlock()));
-            put("Take Off Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getTakeOffTime()));
+            put("Take Off Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getTakeoffTime()));
             put("Landing Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getLandingTime()));
             put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
         }};

@@ -1,6 +1,7 @@
 package com.learning.vaadin.ui.component.grid.filter.impl;
 
-import com.learning.model.grid.FlightLegState;
+
+import com.learning.model.response.FlightLegState;
 import com.learning.vaadin.ui.component.grid.filter.GridFilters;
 import com.vaadin.flow.function.SerializablePredicate;
 

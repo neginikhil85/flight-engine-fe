@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OffBlockTimeEvent implements EventData {
+public class OffBlockTimeEvent {
     private FlightInfoDto flightInfo;
     private String currentOffBlock;
     private String previousOffBlock;

@@ -1,6 +1,5 @@
 package com.learning.event;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.learning.enums.TimeType;
 import com.learning.model.dto.FlightInfoDto;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TakeOffTimeEvent implements EventData {
+public class TakeOffTimeEvent {
     private FlightInfoDto flightInfo;
     private String currentTakeOffTime;
     private String previousTakeOffTime;

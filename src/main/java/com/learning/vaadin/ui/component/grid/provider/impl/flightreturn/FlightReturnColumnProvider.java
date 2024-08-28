@@ -30,11 +30,11 @@ public class FlightReturnColumnProvider implements ColumnProvider<FlightReturn> 
             put("Schedule Status", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getScheduleStatus()));
             put("Estimated In Block", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getEstimatedTimes().getInBlock()));
             put("Estimated Off Block", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getEstimatedTimes().getOffBlock()));
-            put("Estimated Take Off", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getEstimatedTimes().getTakeOffTime()));
+            put("Estimated Take Off", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getEstimatedTimes().getTakeoffTime()));
             put("Estimated Landing", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getEstimatedTimes().getLandingTime()));
             put("Actual In Block", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getInBlock()));
             put("Actual Off Block", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getOffBlock()));
-            put("Actual Take Off", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getTakeOffTime()));
+            put("Actual Take Off", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getTakeoffTime()));
             put("Actual Landing", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getLandingTime()));
             put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
         }};

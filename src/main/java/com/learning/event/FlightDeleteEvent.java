@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlightDeleteEvent implements EventData {
+public class FlightDeleteEvent {
     private FlightInfoDto flightInfo;
     private String operationalStatus;
     private LocalDateTime eventReceived;

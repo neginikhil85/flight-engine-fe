@@ -27,6 +27,11 @@ public class GateChangeConverter implements GridConverter<GateChangeEvent, GateC
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+
+        if (Objects.nonNull(event.getCurrent())) {
+            CommonUtils.setIfNotNull(event.getCurrent(), builder::current);
+        }
+
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }
