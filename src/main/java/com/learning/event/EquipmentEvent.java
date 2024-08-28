@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EquipmentEvent implements EventData {
+public class EquipmentEvent {
     private FlightInfoDto flightInfo;
     private EquipmentDto current;
     private EquipmentDto previous;

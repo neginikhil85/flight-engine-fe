@@ -27,6 +27,7 @@ public class TerminalConverter implements GridConverter<TerminalEvent, Terminal>
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+        CommonUtils.setIfNotNull(event.getCurrent(), builder::current);
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

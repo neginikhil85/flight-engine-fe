@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiversionEvent implements EventData {
+public class DiversionEvent {
     private FlightInfoDto flightInfo;
     private String flightStatus;
     private FlightLegState.OpsProperties.FlightContinuationData continuationLeg;

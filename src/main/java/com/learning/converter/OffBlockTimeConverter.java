@@ -27,6 +27,8 @@ public class OffBlockTimeConverter implements GridConverter<OffBlockTimeEvent, O
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+        CommonUtils.setIfNotNull(event.getCurrentOffBlock(), builder::currentOffBlock);
+        CommonUtils.setIfNotNull(event.getTimeType(), builder::timeType);
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

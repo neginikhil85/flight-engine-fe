@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class InBlockTimeEvent implements EventData {
+public class InBlockTimeEvent {
     private FlightInfoDto flightInfo;
     private String currentInBlock;
     private String previousInBlock;

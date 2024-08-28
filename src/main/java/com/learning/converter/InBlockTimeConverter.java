@@ -27,6 +27,8 @@ public class InBlockTimeConverter implements GridConverter<InBlockTimeEvent, InB
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+        CommonUtils.setIfNotNull(event.getCurrentInBlock(), builder::currentInBlock);
+        CommonUtils.setIfNotNull(event.getTimeType(), builder::timeType);
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

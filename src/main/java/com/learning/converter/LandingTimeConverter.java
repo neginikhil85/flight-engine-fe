@@ -27,6 +27,8 @@ public class LandingTimeConverter implements GridConverter<LandingTimeEvent, Lan
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+        CommonUtils.setIfNotNull(event.getCurrentLandingTime(), builder::currentLandingTime);
+        CommonUtils.setIfNotNull(event.getTimeType(), builder::timeType);
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }

@@ -2,6 +2,7 @@ package com.learning.model.grid;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.learning.model.dto.FlightInfoDto;
+import com.learning.model.response.FlightLegState;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class Diversion extends FlightInfoDto {
     private String diversionCode;
     private String estimatedInBlock;
     private String registration;
-    private FlightLegState.FlightContinuationDataDto continuationLeg;
+    private FlightLegState.OpsProperties.FlightContinuationData continuationLeg;
     @JsonFormat(pattern = "dd-MM-yyyy hh:mm a")
     private LocalDateTime eventReceivedOn;
 }

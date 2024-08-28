@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LandingTimeEvent implements EventData {
+public class LandingTimeEvent {
     private FlightInfoDto flightInfo;
     private String currentLandingTime;
     private String previousLandingTime;

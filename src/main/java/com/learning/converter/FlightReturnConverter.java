@@ -27,6 +27,10 @@ public class FlightReturnConverter implements GridConverter<FlightReturnEvent, F
             CommonUtils.setIfNotNull(flightInfo.getEndStation(), builder::endStation);
             CommonUtils.setIfNotNull(flightInfo.getScheduledStartTime(), builder::scheduledStartTime);
         }
+
+        if (Objects.nonNull(event.getReturnAtom())) {
+            CommonUtils.setIfNotNull(event.getReturnAtom(), builder::returnAtom);
+        }
         CommonUtils.setIfNotNull(event.getEventReceived(), builder::eventReceivedOn);
         return builder.build();
     }
