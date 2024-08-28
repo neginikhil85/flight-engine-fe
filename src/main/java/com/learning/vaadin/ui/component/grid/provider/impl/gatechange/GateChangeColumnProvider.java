@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Component
 public class GateChangeColumnProvider implements ColumnProvider<GateChange> {
+
     @Override
     public Class<GateChange> beanType() {
         return GateChange.class;
@@ -31,7 +32,7 @@ public class GateChangeColumnProvider implements ColumnProvider<GateChange> {
             put("End Gate", safeValueProvider(gateChange -> gateChange.getCurrent().getStartGate()));
             put("Start Stand", safeValueProvider(gateChange -> gateChange.getCurrent().getStartStand()));
             put("End Stand", safeValueProvider(gateChange -> gateChange.getCurrent().getEndStand()));
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(gateChange -> CommonUtils.getFormattedDate(gateChange.getEventReceivedOn())));
         }};
     }
 }

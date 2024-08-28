@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Component
 public class FlightReturnColumnProvider implements ColumnProvider<FlightReturn> {
+
     @Override
     public Class<FlightReturn> beanType() {
         return FlightReturn.class;
@@ -36,7 +37,7 @@ public class FlightReturnColumnProvider implements ColumnProvider<FlightReturn> 
             put("Actual Off Block", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getOffBlock()));
             put("Actual Take Off", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getTakeoffTime()));
             put("Actual Landing", safeValueProvider(flightReturn -> flightReturn.getReturnAtom().getActualTimes().getLandingTime()));
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(flightReturn -> CommonUtils.getFormattedDate(flightReturn.getEventReceivedOn())));
         }};
     }
 }

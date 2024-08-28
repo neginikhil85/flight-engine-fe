@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Component
 public class OperationStatusColumnProvider implements ColumnProvider<OperationStatus> {
+
     @Override
     public Class<OperationStatus> beanType() {
         return OperationStatus.class;
@@ -25,7 +26,7 @@ public class OperationStatusColumnProvider implements ColumnProvider<OperationSt
             put("End Station", OperationStatus::getEndStation);
             put("Scheduled Start Time", OperationStatus::getScheduledStartTime);
             put("Operational Status", OperationStatus::getCurrentOperationalStatus);
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(operationStatus -> CommonUtils.getFormattedDate(operationStatus.getEventReceivedOn())));
         }};
     }
 }

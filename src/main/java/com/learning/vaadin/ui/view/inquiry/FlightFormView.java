@@ -48,15 +48,15 @@ public class FlightFormView extends VerticalLayout {
             showError(MANDATORY_FIELD_MISSING);
         } else {
             FlightRequest flightRequest = buildFlightRequest(flightForm.getFields());
-            log.info("flightRequest : {}", flightRequest);
-//            jocService.getFlightResponse(flightRequest)
-//                    .ifPresent(flightResponse -> {
-//                        UI.getCurrent().navigate(FlightInquiryView.class)
-//                                .ifPresent(flightView -> {
-//                                    flightView.setFlightResponseInGrid(flightResponse);
-//                                    flightView.setFlightRequest(flightRequest);
-//                                });
-//                    });
+            log.info("[FlightFormView::onSubmit] flightRequest: {}", flightRequest);
+            jocService.getFlightResponse(flightRequest)
+                    .ifPresent(flightResponse -> {
+                        UI.getCurrent().navigate(FlightInquiryView.class)
+                                .ifPresent(flightView -> {
+                                    flightView.setFlightResponseInGrid(flightResponse);
+                                    flightView.setFlightRequest(flightRequest);
+                                });
+                    });
         }
 
         flightForm.getFields().values().forEach(HasValue::clear);
@@ -85,7 +85,7 @@ public class FlightFormView extends VerticalLayout {
         Notification errorNotify = new Notification(text);
         errorNotify.addThemeVariants(NotificationVariant.LUMO_ERROR);
         errorNotify.setPosition(Notification.Position.TOP_END);
-        errorNotify.setDuration(20000);
+        errorNotify.setDuration(200000);
         errorNotify.open();
     }
 }

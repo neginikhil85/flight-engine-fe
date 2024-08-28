@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Component
 public class DoorCloseColumnProvider implements ColumnProvider<DoorClose> {
+
     @Override
     public Class<DoorClose> beanType() {
         return DoorClose.class;
@@ -30,7 +31,7 @@ public class DoorCloseColumnProvider implements ColumnProvider<DoorClose> {
             put("Off Block Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getOffBlock()));
             put("Take Off Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getTakeoffTime()));
             put("Landing Time", safeValueProvider(doorClose -> doorClose.getCurrentActualTimes().getLandingTime()));
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(doorClose -> CommonUtils.getFormattedDate(doorClose.getEventReceivedOn())));
         }};
     }
 }

@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Component
 public class FlightCancelColumnProvider implements ColumnProvider<FlightCancel> {
+
     @Override
     public Class<FlightCancel> beanType() {
         return FlightCancel.class;
@@ -29,7 +30,7 @@ public class FlightCancelColumnProvider implements ColumnProvider<FlightCancel> 
             put("Cancellation Code", safeValueProvider(flightCancel -> flightCancel.getCurrent().getCancellationCode()));
             put("Operational Status", safeValueProvider(flightCancel -> flightCancel.getCurrent().getOperationalStatus()));
             put("Service Type", safeValueProvider(flightCancel -> flightCancel.getCurrent().getServiceType()));
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(flightCancel -> CommonUtils.getFormattedDate(flightCancel.getEventReceivedOn())));
         }};
     }
 }

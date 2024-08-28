@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Component
 public class TerminalColumnProvider implements ColumnProvider<Terminal> {
+
     @Override
     public Class<Terminal> beanType() {
         return Terminal.class;
@@ -20,7 +21,6 @@ public class TerminalColumnProvider implements ColumnProvider<Terminal> {
     public Map<String, ValueProvider<Terminal, ?>> getHeaderAndValueProviders() {
         return  new LinkedHashMap<>() {{
             put("Flight No.", Terminal::getFlightNumber);
-           // put("Carrier", Terminal::getCarrier);
             put("Date Of Origin", Terminal::getDateOfOrigin);
             put("Start Station", Terminal::getStartStation);
             put("End Station", Terminal::getEndStation);
@@ -31,7 +31,7 @@ public class TerminalColumnProvider implements ColumnProvider<Terminal> {
             put("End Gate", safeValueProvider(terminal -> terminal.getCurrent().getEndGate()));
             put("Start Stand", safeValueProvider(terminal -> terminal.getCurrent().getStartStand()));
             put("End Stand", safeValueProvider(terminal -> terminal.getCurrent().getEndStand()));
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(terminal -> CommonUtils.getFormattedDate(terminal.getEventReceivedOn())));
         }};
     }
 }

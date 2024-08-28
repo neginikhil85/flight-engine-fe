@@ -6,6 +6,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.timepicker.TimePicker;
 import lombok.Getter;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -23,6 +24,7 @@ public class VerticalDateTimePicker extends CustomField<LocalDateTime> {
         datePicker = new DatePicker();
         datePicker.setPlaceholder("select date");
         timePicker = new TimePicker();
+        timePicker.setStep(Duration.ofSeconds(1));
         timePicker.setPlaceholder("select time");
 
         // Add components to the layout

@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Component
 public class FlightDeleteColumnProvider implements ColumnProvider<FlightDelete> {
+
     @Override
     public Class<FlightDelete> beanType() {
         return FlightDelete.class;
@@ -25,7 +26,7 @@ public class FlightDeleteColumnProvider implements ColumnProvider<FlightDelete> 
             put("End Station", FlightDelete::getEndStation);
             put("Scheduled Start Time", FlightDelete::getScheduledStartTime);
             put("Operational Status", FlightDelete::getOperationalStatus);
-            put("Event Received On", delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn()));
+            put("Event Received On", safeValueProvider(flightDelete -> CommonUtils.getFormattedDate(flightDelete.getEventReceivedOn())));
         }};
     }
 }

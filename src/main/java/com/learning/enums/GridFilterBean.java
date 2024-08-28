@@ -10,19 +10,23 @@ import java.util.function.Supplier;
 
 @Getter
 public enum GridFilterBean {
-    FLIGHT_DATA(FlightDataGridFilters::new),
-    ACTUAL_TIMES(ActualTimesDataGridFilters::new),
-    DELAY_DATA(DelayDataGridFilters::new),
-    DIVERSION_DATA(DiversionDataGridFilters::new),
-    DOOR_CLOSE(DoorCloseDataGridFilters::new),
-    EQUIPMENT(EquipmentDataGridFilters::new),
-    ESTIMATED_TIMES(EstimatedTimesDataGridFilters::new),
-    FLIGHT_CANCEL(FlightCancelDataGridFilters::new),
-    FLIGHT_DELETE(FlightDeleteDataGridFilters::new),
-    FLIGHT_RETURN(FlightReturnDataGridFilters::new),
-    GATE_CHANGE(GateChangeDataGridFilters::new),
-    OPERATION_STATUS(OperationStatusDataGridFilters::new),
-    TERMINAL(TerminalDataGridFilters::new);
+    FLIGHT_LEG(FlightLegGridFilters::new),
+    ACTUAL_TIMES(ActualTimesGridFilters::new),
+    DELAY(DelayGridFilters::new),
+    DIVERSION(DiversionGridFilters::new),
+    DOOR_CLOSE(DoorCloseGridFilters::new),
+    EQUIPMENT(EquipmentGridFilters::new),
+    ESTIMATED_TIMES(EstimatedTimesGridFilters::new),
+    FLIGHT_CANCEL(FlightCancelGridFilters::new),
+    FLIGHT_DELETE(FlightDeleteGridFilters::new),
+    FLIGHT_RETURN(FlightReturnGridFilters::new),
+    GATE_CHANGE(GateChangeGridFilters::new),
+    OPERATION_STATUS(OperationStatusGridFilters::new),
+    TERMINAL(TerminalGridFilters::new),
+    IN_BLOCK_TIME(InBlockTimeGridFilters::new),
+    OFF_BLOCK_TIME(OffBlockTimeGridFilters::new),
+    TAKE_OFF_TIME(TakeOffTimeGridFilters::new),
+    LANDING_TIME(LandingTimeGridFilters::new);
 
     private final GridFilters<?> bean;
     private final SingletonHelper singletonHelper = new SingletonHelper();

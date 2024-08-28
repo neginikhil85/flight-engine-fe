@@ -10,7 +10,14 @@
 
 html {
     --vaadin-app-layout-drawer-width : 12rem;
+    --vaadin-button-primary-background: #DC4C64 !important;
     --lumo-font-family: 'Poppins';
 }
 
 scrollbar-width: thin;
+
+/* Target only error theme notifications */
+.vaadin-notification-card::part(overlay) {
+    background-color: #DC4C64 !important;
+}
+

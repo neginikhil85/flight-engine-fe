@@ -39,7 +39,7 @@ public class DiversionColumnProvider implements ColumnProvider<Diversion> {
             put("Continuation Start Time Offset", safeValueProvider(diversion -> diversion.getContinuationLeg().getStartTimeOffset()));
             put("Continuation End Time Offset", safeValueProvider(diversion -> diversion.getContinuationLeg().getEndTimeOffset()));
             put("Continuation Seq No.", safeValueProvider(diversion -> diversion.getContinuationLeg().getSeqNumber()));
-            put("Event Received On", safeValueProvider(delayData -> CommonUtils.getFormattedDate(delayData.getEventReceivedOn())));
+            put("Event Received On", safeValueProvider(diversion -> CommonUtils.getFormattedDate(diversion.getEventReceivedOn())));
         }};
     }
 }

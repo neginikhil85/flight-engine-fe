@@ -35,11 +35,15 @@ websocket:
         flight-delete: ws://${flight.engine.service.base-url}/flight-delete
         flight-return: ws://${flight.engine.service.base-url}/flight-return
         gate-change: ws://${flight.engine.service.base-url}/gate-change
-        in-block-time: ws://${flight.engine.service.base-url}/in-block-time
-        landing-time: ws://${flight.engine.service.base-url}/landing-time
-        off-block-time: ws://${flight.engine.service.base-url}/off-block-time
+        in-block-actual-time: ws://${flight.engine.service.base-url}/in-block-actual-time
+        in-block-estimated-time: ws://${flight.engine.service.base-url}/in-block-estimated-time
+        landing-actual-time: ws://${flight.engine.service.base-url}/landing-actual-time
+        landing-estimated-time: ws://${flight.engine.service.base-url}/landing-estimated-time
+        off-block-actual-time: ws://${flight.engine.service.base-url}/off-block-actual-time
+        off-block-estimated-time: ws://${flight.engine.service.base-url}/off-block-estimated-time
         operation-status: ws://${flight.engine.service.base-url}/operation-status
-        takeoff-time: ws://${flight.engine.service.base-url}/Takeoff-time
+        takeoff-actual-time: ws://${flight.engine.service.base-url}/takeoff-actual-time
+        takeoff-estimated-time: ws://${flight.engine.service.base-url}/takeoff-estimated-time
         terminal: ws://${flight.engine.service.base-url}/terminal
 
 # user defined properties

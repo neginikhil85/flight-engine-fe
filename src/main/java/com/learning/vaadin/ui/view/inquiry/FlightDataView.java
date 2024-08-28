@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FlightDataView extends VerticalLayout {
 
-    private SearchableGrid<FlightLegState> flightInfoGrid;
+    private final SearchableGrid<FlightLegState> flightInfoGrid;
 
     public FlightDataView(ColumnProviderFactory columnProviderFactory) {
         addClassName("data-view");
@@ -19,7 +19,7 @@ public class FlightDataView extends VerticalLayout {
         H1 title = new H1("Flight Data");
 
         flightInfoGrid = new SearchableGrid<>(FlightLegState.class, columnProviderFactory);
-        flightInfoGrid.setSearchFilters(GridFilterBean.FLIGHT_DATA.getBean());
+        flightInfoGrid.setSearchFilters(GridFilterBean.FLIGHT_LEG.getBean());
 
         add(title, flightInfoGrid);
         setSizeFull();
