@@ -5,21 +5,17 @@ import com.learning.converter.InBlockTimeConverter;
 import com.learning.converter.LandingTimeConverter;
 import com.learning.converter.OffBlockTimeConverter;
 import com.learning.converter.TakeOffTimeConverter;
-import com.learning.model.grid.ActualTimes;
 import com.learning.vaadin.ui.component.grid.provider.ColumnProviderFactory;
 import com.learning.vaadin.ui.layout.MainLayout;
-import com.learning.vaadin.ui.view.events.times.InBlockTimeView;
-import com.learning.vaadin.ui.view.events.times.LandingTimeView;
-import com.learning.vaadin.ui.view.events.times.OffBlockTimeView;
-import com.learning.vaadin.ui.view.events.times.TakeoffTimeView;
+import com.learning.vaadin.ui.view.events.times.estimated.InBlockTimeView;
+import com.learning.vaadin.ui.view.events.times.estimated.LandingTimeView;
+import com.learning.vaadin.ui.view.events.times.estimated.OffBlockTimeView;
+import com.learning.vaadin.ui.view.events.times.estimated.TakeoffTimeView;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @PageTitle("actual-times")

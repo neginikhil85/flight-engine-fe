@@ -54,8 +54,8 @@ public class MainLayout extends AppLayout {
         events.addItem(new SideNavItem("Delays", "/ws/delay"));
         events.addItem(new SideNavItem("Diversions", "/ws/diversion"));
         events.addItem(new SideNavItem("Door Close", "/ws/door-close"));
-        events.addItem(new SideNavItem("Estimated Times", "/ws/estimated-times"));
-        events.addItem(new SideNavItem("Actual Times", "/ws/actual-times"));
+//        events.addItem(new SideNavItem("Estimated Times", "/ws/estimated-times"));
+//        events.addItem(new SideNavItem("Actual Times", "/ws/actual-times"));
         events.addItem(new SideNavItem("Equipment", "/ws/equipment"));
         events.addItem(new SideNavItem("Flight Cancel", "/ws/flight-cancel"));
         events.addItem(new SideNavItem("Flight Return", "/ws/flight-return"));
@@ -63,6 +63,14 @@ public class MainLayout extends AppLayout {
         events.addItem(new SideNavItem("Operation Status", "/ws/operation-status"));
         events.addItem(new SideNavItem("Gate Change", "/ws/gate-change"));
         events.addItem(new SideNavItem("Terminal", "/ws/terminal"));
+        events.addItem(new SideNavItem("InBlock Estimated Time", "/ws/in-block-estimated-time"));
+        events.addItem(new SideNavItem("OffBlock Estimated Time", "/ws/off-block-actual-time"));
+        events.addItem(new SideNavItem("TakeOff Estimated Time", "/ws/takeoff-estimated-time"));
+        events.addItem(new SideNavItem("Landing Estimated Time", "/ws/landing-estimated-time"));
+        events.addItem(new SideNavItem("InBlock Actual Time", "/ws/in-block-actual-time"));
+        events.addItem(new SideNavItem("Landing Actual Time", "/ws/landing-actual-time"));
+        events.addItem(new SideNavItem("OffBlock Actual Time", "/ws/off-block-actual-time"));
+        events.addItem(new SideNavItem("TakeOff Actual Time", "/ws/takeoff-actual-time"));
 
         nav.addItem(events);
         return nav;

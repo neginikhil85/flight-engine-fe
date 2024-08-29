@@ -9,8 +9,7 @@
 @import 'views-css/event-view.css';
 
 html {
-    --vaadin-app-layout-drawer-width : 12rem;
-    --vaadin-button-primary-background: #DC4C64 !important;
+    --vaadin-app-layout-drawer-width : 16rem;
     --lumo-font-family: 'Poppins';
 }
 

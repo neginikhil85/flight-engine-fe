@@ -1,4 +1,4 @@
-package com.learning.vaadin.ui.view.events.times;
+package com.learning.vaadin.ui.view.events.times.actual;
 
 import com.learning.converter.LandingTimeConverter;
 import com.learning.enums.GridFilterBean;
@@ -8,9 +8,12 @@ import com.learning.util.MapperUtils;
 import com.learning.vaadin.ui.component.grid.CustomGrid;
 import com.learning.vaadin.ui.component.grid.SearchableGrid;
 import com.learning.vaadin.ui.component.grid.provider.ColumnProviderFactory;
+import com.learning.vaadin.ui.layout.MainLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -21,6 +24,8 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+@PageTitle("landing-actual-time")
+@Route(value = "/ws/landing-actual-time", layout = MainLayout.class)
 public class LandingTimeView extends VerticalLayout {
     private final List<LandingTime> landingTimesData = new ArrayList<>();
     private final LandingTimeConverter converter;
@@ -30,7 +35,7 @@ public class LandingTimeView extends VerticalLayout {
         this.converter = converter;
 
         addClassName("event-view");
-        H1 title = new H1("Landing Time");
+        H1 title = new H1("Landing Estimated Time");
         SearchableGrid<LandingTime> landingTimesGrid = new SearchableGrid<>(LandingTime.class, columnProviderFactory);
         landingTimesGrid.updateItems(landingTimesData);
         landingTimesGrid.setSearchFilters(GridFilterBean.LANDING_TIME.getBean());
