@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+            docker {
+                image 'maven:3.8.6-jdk-11' // or another Maven image
+                args '-v /path/to/your/project:/workspace'
+            }
+    }
 
     environment {
         // Project and application configuration in OpenShift
