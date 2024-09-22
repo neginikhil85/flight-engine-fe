@@ -59,19 +59,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-//             echo 'Cleaning up workspace...'
-//             cleanWs()
-        }
-
-        success {
-            echo 'Deployment successful!'
-        }
-
-        failure {
-            echo 'Build or deployment failed!'
-        }
-    }
 }
