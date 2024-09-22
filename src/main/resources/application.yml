@@ -1,5 +1,6 @@
 vaadin:
     launch-browser: true
+    productionMode: true
 
 flight:
     engine:
