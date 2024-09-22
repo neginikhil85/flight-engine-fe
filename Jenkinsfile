@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Clean and build the project
-                    sh 'mvn clean package'
+                    // Clean and build the project using cmd
+                    bat 'mvn clean package'
                 }
             }
         }
@@ -14,8 +14,8 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    // Run the application (adjust the command as needed)
-                    sh 'java -jar target/your-app.jar'
+                    // Run the application using cmd (adjust the command as needed)
+                    bat 'java -jar target/your-app.jar'
                 }
             }
         }
