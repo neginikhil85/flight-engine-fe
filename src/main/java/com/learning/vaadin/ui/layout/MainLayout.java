@@ -72,6 +72,15 @@ public class MainLayout extends AppLayout {
         events.addItem(new SideNavItem("OffBlock Actual Time", "/ws/off-block-actual-time"));
         events.addItem(new SideNavItem("TakeOff Actual Time", "/ws/takeoff-actual-time"));
 
+        // Adjusting only the drawer width without impacting other styles
+        events.getElement().addEventListener("click", listener -> {
+            if (events.isExpanded()) {
+                nav.addClassName("side-nav-bar-item-expanded");
+            } else {
+                nav.removeClassName("side-nav-bar-item-expanded");
+            }
+        });
+
         nav.addItem(events);
         return nav;
     }

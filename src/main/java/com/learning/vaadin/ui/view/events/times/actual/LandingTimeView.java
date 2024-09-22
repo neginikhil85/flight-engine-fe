@@ -35,7 +35,7 @@ public class LandingTimeView extends VerticalLayout {
         this.converter = converter;
 
         addClassName("event-view");
-        H1 title = new H1("Landing Estimated Time");
+        H1 title = new H1("Landing Actual Time");
         SearchableGrid<LandingTime> landingTimesGrid = new SearchableGrid<>(LandingTime.class, columnProviderFactory);
         landingTimesGrid.updateItems(landingTimesData);
         landingTimesGrid.setSearchFilters(GridFilterBean.LANDING_TIME.getBean());

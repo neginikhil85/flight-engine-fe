@@ -35,7 +35,7 @@ public class TakeoffTimeView extends VerticalLayout {
         this.converter = converter;
 
         addClassName("event-view");
-        H1 title = new H1("Takeoff Time");
+        H1 title = new H1("Takeoff Estimated Time");
         SearchableGrid<TakeOffTime> takeOffTimeGrid = new SearchableGrid<>(TakeOffTime.class, columnProviderFactory);
         takeOffTimeGrid.updateItems(takeOffTimesData);
         takeOffTimeGrid.setSearchFilters(GridFilterBean.TAKE_OFF_TIME.getBean());

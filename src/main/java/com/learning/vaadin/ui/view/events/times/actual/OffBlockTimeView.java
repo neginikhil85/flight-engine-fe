@@ -35,7 +35,7 @@ public class OffBlockTimeView extends VerticalLayout {
         this.converter = converter;
 
         addClassName("event-view");
-        H1 title = new H1("OffBlock Time");
+        H1 title = new H1("OffBlock Actual Time");
         SearchableGrid<OffBlockTime> offBlockTimesGrid = new SearchableGrid<>(OffBlockTime.class, columnProviderFactory);
         offBlockTimesGrid.updateItems(offBlockTimesData);
         offBlockTimesGrid.setSearchFilters(GridFilterBean.OFF_BLOCK_TIME.getBean());

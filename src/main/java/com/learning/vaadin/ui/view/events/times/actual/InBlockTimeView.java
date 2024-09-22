@@ -35,7 +35,7 @@ public class InBlockTimeView extends VerticalLayout {
         this.converter = converter;
 
         addClassName("event-view");
-        H1 title = new H1("InBlock Estimated Time");
+        H1 title = new H1("InBlock Actual Time");
         SearchableGrid<InBlockTime> inBlockTimesGrid = new SearchableGrid<>(InBlockTime.class, columnProviderFactory);
         inBlockTimesGrid.updateItems(inBlockTimesData);
         inBlockTimesGrid.setSearchFilters(GridFilterBean.IN_BLOCK_TIME.getBean());

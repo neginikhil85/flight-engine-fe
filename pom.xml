@@ -112,7 +112,19 @@
 	<profiles>
 		<profile>
 			<id>production</id>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>central</id>
+					<url>https://repo1.maven.org/maven2/</url>
+				</pluginRepository>
+			</pluginRepositories>
 			<dependencies>
+				<!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+				<dependency>
+					<groupId>com.nimbusds</groupId>
+					<artifactId>nimbus-jose-jwt</artifactId>
+					<version>9.41.1</version>
+				</dependency>
 				<dependency>
 					<groupId>com.vaadin</groupId>
 					<artifactId>vaadin-core</artifactId>
